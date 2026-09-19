@@ -10,4 +10,4 @@ We highly recommend reading the [Urban areas Algorithm Theoretical Basis Documen
 ## Collections and Codes
 
 * [Collection 1](./collection_1/workflow)
-* [Collection 3](./collection_3/workflow)
+* [Collection 2](./collection_2/workflow)

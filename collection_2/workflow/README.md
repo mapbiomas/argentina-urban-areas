@@ -1,7 +1,7 @@
-# Collection 3 — Urban Areas
+# Collection 2 — Urban Areas
 
 Google Earth Engine pipeline for MapBiomas Argentina — Urban area,
-Collection 3 (1985–2025), classified per ecoregion (17 ecoregions) and
+Collection 2 (1985–2025), classified per ecoregion (17 ecoregions) and
 integrated nationally.
 
 This is a documented, public-reproducibility version of the original GEE
@@ -62,17 +62,9 @@ each script's header) — kept as in the original, not corrected.
 | 04 | [04-classification_ecoregion_export.js](04-classification_ecoregion_export.js) | Thresholds the harmonized probabilities into a binary classification, per ecoregion and calibration period. |
 | 04b | [04b-integration-max.js](04b-integration-max.js) / [04b-integration-mosaic.js](04b-integration-mosaic.js) | Two alternative strategies for merging the 16 per-ecoregion classifications (Pampa's 3 parts merged with `.max()` vs `.mosaic()`) into one national image, resolving boundary overlaps with an explicit priority table. |
 
-### `filters/` — post-processing (national, single chain)
+### `filters2-este/` — post-processing
 
-| Script | What it does |
-|---|---|
-| [05_postprocessing_filter-max.js](filters/05_postprocessing_filter-max.js) / [05_postprocessing_filter-mosaic.js](filters/05_postprocessing_filter-mosaic.js) | Gap-fill + 5-year-uniqueness temporal filter + breakpoint-based onset detection + spatial hole-fill/noise removal, run on each of the two 04b integration variants. |
-| [05b_postprocessing_steps_filter-mosaic.js](filters/05b_postprocessing_steps_filter-mosaic.js) | Step-by-step variant of the "mosaic" filter chain that exports each intermediate stage separately, for QA. |
-
-### `filters2-este/` — post-processing (alternative chain)
-
-A second, independent post-processing chain (kept separate from
-`filters/`), run in this order:
+The post-processing chain, run in this order:
 
 ```
 SF → TF1 → TF2 → TF3 → Mask → (TF4umb_postmask.js  |  BreakPoint.js)
